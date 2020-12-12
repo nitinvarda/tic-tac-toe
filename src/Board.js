@@ -37,17 +37,16 @@ const buttonStyle = {
     'marginBottom': '16px',
     'width': '80px',
     'height': '40px',
-    'backgroundColor': '#8acaca',
     'color': 'white',
     'fontSize': '16px',
 }
 
 const winnerStyle = {
-    display: 'flex',
-    flexDirection: 'row',
-    height: '100vh',
-    justifyContent: 'center',
-    alignItems: 'center',
+    'display': 'flex',
+    'flexDirection': 'row',
+    'height': '100vh',
+    'justifyContent': 'center',
+    'alignItems': 'center',
 
 }
 
@@ -162,7 +161,7 @@ class Board extends React.Component {
                     <h3 className='text-center'>Tic-Tac-Toe</h3>
                     <div className="status" style={instructionsStyle}> {this.state.value === 'X' ? `First Player : ${this.state.value}` : `Second Player : ${this.state.value}`}</div>
 
-                    <button onClick={this.reset} style={buttonStyle}>Reset</button>
+                    <Button variant='danger' onClick={this.reset} style={buttonStyle}>Reset</Button>
                     <div style={boardStyle}>
                         <div className="board-row" style={rowStyle}>
                             <Square afterSelecting={this.afterSelecting} value={this.state.value}
