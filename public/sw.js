@@ -1,5 +1,5 @@
-const cacheData = 'appv2';
-this.addEventListener("install", (event) => {
+const cacheData = 'appv1';
+self.addEventListener("install", (event) => {
     event.waitUntil(
         caches.open(cacheData).then(cache => {
             cache.addAll([
@@ -18,8 +18,15 @@ this.addEventListener("install", (event) => {
 })
 
 
+// activated service worker
+self.addEventListener('activate', evt => {
+    // console.log('service worker has been activated')
 
-this.addEventListener('fetch', (event) => {
+})
+
+
+
+self.addEventListener('fetch', (event) => {
 
 
     if (!navigator.onLine) {
