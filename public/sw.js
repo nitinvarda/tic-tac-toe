@@ -28,8 +28,8 @@ this.addEventListener('fetch', (event) => {
                 if (res) {
                     return res
                 }
-                // let requestUrl = event.request.clone();
-                // fetch(requestUrl)
+                let requestUrl = event.request.clone();
+                fetch(requestUrl)
             })
         )
     }
