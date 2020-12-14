@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Square from './components/Square';
 import { Container, Col, Row, Button } from 'react-bootstrap'
 
@@ -52,147 +52,163 @@ const winnerStyle = {
 
 
 
+const Board = () => {
+    const [option, setOption] = useState(true)
+    const [value, setValue] = useState('X')
+    const [square1, setSquare1] = useState('')
+    const [square2, setSquare2] = useState('')
+    const [square3, setSquare3] = useState('')
+    const [square4, setSquare4] = useState('')
+    const [square5, setSquare5] = useState('')
+    const [square6, setSquare6] = useState('')
+    const [square7, setSquare7] = useState('')
+    const [square8, setSquare8] = useState('')
+    const [square9, setSquare9] = useState('')
+    const [reset, setReset] = useState(false)
 
 
-class Board extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            option: true,
-            value: 'X',
-            square1: '',
-            square2: '',
-            square3: '',
-            square4: '',
-            square5: '',
-            square6: '',
-            square7: '',
-            square8: '',
-            square9: '',
-            winner: '',
-            reset: false
-        }
-        this.afterSelecting = this.afterSelecting.bind(this)
-        this.reset = this.reset.bind(this)
-        this.back = this.back.bind(this)
+
+    const afterSelecting = () => {
+        setOption(!option)
+        setValue(!option ? 'X' : 'O')
     }
 
-    afterSelecting() {
-        this.setState({
-            option: !this.state.option,
-            value: !this.state.option ? 'X' : 'O'
-        })
-    }
 
-    reset() {
-        this.setState({
-            reset: true
-        })
+    const resetState = () => {
+        setReset(true)
         setTimeout(() => {
-            this.setState({
-                reset: false,
-                option: true,
-                value: 'X'
-            })
-
-        }, 2000)
+            setReset(false)
+            setOption(true)
+            setValue('X')
+        }, 100)
     }
 
-    back() {
-        this.setState({
-            option: true,
-            value: 'X',
-            square1: '',
-            square2: '',
-            square3: '',
-            square4: '',
-            square5: '',
-            square6: '',
-            square7: '',
-            square8: '',
-            square9: '',
-            reset: false
 
-        })
+    const back = () => {
+        setOption(true)
+        setValue('X')
+        setSquare1('')
+        setSquare2('')
+        setSquare3('')
+        setSquare4('')
+        setSquare5('')
+        setSquare6('')
+        setSquare7('')
+        setSquare8('')
+        setSquare9('')
+        setReset(false)
     }
 
-    render() {
-
-        if ((this.state.square1 === 'X' && this.state.square2 === 'X' && this.state.square3 === 'X') ||
-            (this.state.square1 === 'O' && this.state.square2 === 'O' && this.state.square3 === 'O') ||
-            (this.state.square4 === 'X' && this.state.square5 === 'X' && this.state.square6 === 'X') ||
-            (this.state.square4 === 'O' && this.state.square5 === 'O' && this.state.square6 === 'O') ||
-            (this.state.square7 === 'X' && this.state.square8 === 'X' && this.state.square9 === 'X') ||
-            (this.state.square7 === 'O' && this.state.square8 === 'O' && this.state.square9 === 'O') ||
-            (this.state.square1 === 'X' && this.state.square5 === 'X' && this.state.square9 === 'X') ||
-            (this.state.square1 === 'O' && this.state.square5 === 'O' && this.state.square9 === 'O') ||
-            (this.state.square3 === 'X' && this.state.square5 === 'X' && this.state.square7 === 'X') ||
-            (this.state.square3 === 'O' && this.state.square5 === 'O' && this.state.square7 === 'O') ||
-            (this.state.square1 === 'X' && this.state.square4 === 'X' && this.state.square7 === 'X') ||
-            (this.state.square1 === 'O' && this.state.square4 === 'O' && this.state.square7 === 'O') ||
-            (this.state.square2 === 'X' && this.state.square5 === 'X' && this.state.square8 === 'X') ||
-            (this.state.square2 === 'O' && this.state.square5 === 'O' && this.state.square8 === 'O') ||
-            (this.state.square3 === 'X' && this.state.square6 === 'X' && this.state.square9 === 'X') ||
-            (this.state.square3 === 'O' && this.state.square6 === 'O' && this.state.square9 === 'O')) {
 
 
-            return (
-                <Container>
-                    <Row>
-                        <Col>
+    if ((square1 === 'X' && square2 === 'X' && square3 === 'X') ||
+        (square1 === 'O' && square2 === 'O' && square3 === 'O') ||
+        (square4 === 'X' && square5 === 'X' && square6 === 'X') ||
+        (square4 === 'O' && square5 === 'O' && square6 === 'O') ||
+        (square7 === 'X' && square8 === 'X' && square9 === 'X') ||
+        (square7 === 'O' && square8 === 'O' && square9 === 'O') ||
+        (square1 === 'X' && square5 === 'X' && square9 === 'X') ||
+        (square1 === 'O' && square5 === 'O' && square9 === 'O') ||
+        (square3 === 'X' && square5 === 'X' && square7 === 'X') ||
+        (square3 === 'O' && square5 === 'O' && square7 === 'O') ||
+        (square1 === 'X' && square4 === 'X' && square7 === 'X') ||
+        (square1 === 'O' && square4 === 'O' && square7 === 'O') ||
+        (square2 === 'X' && square5 === 'X' && square8 === 'X') ||
+        (square2 === 'O' && square5 === 'O' && square8 === 'O') ||
+        (square3 === 'X' && square6 === 'X' && square9 === 'X') ||
+        (square3 === 'O' && square6 === 'O' && square9 === 'O')) {
 
-                            <div style={winnerStyle}>
+        return (
+            <Container>
+                <Row>
+                    <Col>
 
-                                <div className='d-flex flex-column justify-content-center'>
+                        <div style={winnerStyle}>
 
-                                    <div className="winner" style={instructionsStyle}>{this.state.value === 'O' ? <h3>Player One Won : X</h3> : <h3>Player Two Won : O</h3>}</div>
-                                    <Button variant='primary' onClick={this.back}>Play Again</Button>
-                                </div>
-
+                            <div className='d-flex flex-column justify-content-center'>
+                                <div className="winner" style={instructionsStyle}>{value === 'O' ? <h3>Player One Won : X</h3> : <h3>Player Two Won : O</h3>}</div>
+                                <Button variant='primary' onClick={back}>Play Again</Button>
                             </div>
-                        </Col>
-                    </Row>
-                </Container>
-            )
-        }
-        else {
-            return (
+
+                        </div>
+                    </Col>
+                </Row>
+            </Container>
+        )
+    }
+    else if (square1.length >= 1 &&
+        square2.length >= 1 &&
+        square3.length >= 1 &&
+        square4.length >= 1 &&
+        square5.length >= 1 &&
+        square6.length >= 1 &&
+        square7.length >= 1 &&
+        square8.length >= 1 &&
+        square9.length >= 1) {
+        return (
+            <Container>
+                <Row>
+                    <Col>
+
+                        <div style={winnerStyle}>
+
+                            <div className='d-flex flex-column justify-content-center'>
+
+                                <div className="winner" style={instructionsStyle}>Match Drawn    !!</div>
+                                <Button variant='primary' onClick={back}>Play Again</Button>
+                            </div>
+
+                        </div>
+                    </Col>
+                </Row>
+            </Container>
+
+        )
+    }
+    else {
+        return (
+            <>
                 <div style={containerStyle} className="gameBoard">
                     <h3 className='text-center'>Tic-Tac-Toe</h3>
-                    <div className="status" style={instructionsStyle}> {this.state.value === 'X' ? `First Player : ${this.state.value}` : `Second Player : ${this.state.value}`}</div>
-
-                    <Button variant='danger' onClick={this.reset} style={buttonStyle}>Reset</Button>
+                    <div className="status" style={instructionsStyle}> {value === 'X' ? `First Player : ${value}` : `Second Player : ${value}`}</div>
+                    <Button variant='danger' onClick={resetState} style={buttonStyle}>Reset</Button>
                     <div style={boardStyle}>
                         <div className="board-row" style={rowStyle}>
-                            <Square afterSelecting={this.afterSelecting} value={this.state.value}
-                                squareFill={(value) => this.setState({ square1: value })} reset={this.state.reset} />
-                            <Square afterSelecting={this.afterSelecting} value={this.state.value}
-                                squareFill={(value) => this.setState({ square2: value })} reset={this.state.reset} />
-                            <Square afterSelecting={this.afterSelecting} value={this.state.value}
-                                squareFill={(value) => this.setState({ square3: value })} reset={this.state.reset} />
+                            <Square afterSelecting={afterSelecting} value={value}
+                                squareFill={(value) => setSquare1(value)} reset={reset} />
+                            <Square afterSelecting={afterSelecting} value={value}
+                                squareFill={(value) => setSquare2(value)} reset={reset} />
+                            <Square afterSelecting={afterSelecting} value={value}
+                                squareFill={(value) => setSquare3(value)} reset={reset} />
                         </div>
                         <div className="board-row" style={rowStyle}>
-                            <Square afterSelecting={this.afterSelecting} value={this.state.value}
-                                squareFill={(value) => this.setState({ square4: value })} reset={this.state.reset} />
-                            <Square afterSelecting={this.afterSelecting} value={this.state.value}
-                                squareFill={(value) => this.setState({ square5: value })} reset={this.state.reset} />
-                            <Square afterSelecting={this.afterSelecting} value={this.state.value}
-                                squareFill={(value) => this.setState({ square6: value })} reset={this.state.reset} />
+                            <Square afterSelecting={afterSelecting} value={value}
+                                squareFill={(value) => setSquare4(value)} reset={reset} />
+                            <Square afterSelecting={afterSelecting} value={value}
+                                squareFill={(value) => setSquare5(value)} reset={reset} />
+                            <Square afterSelecting={afterSelecting} value={value}
+                                squareFill={(value) => setSquare6(value)} reset={reset} />
                         </div>
                         <div className="board-row" style={rowStyle}>
-                            <Square afterSelecting={this.afterSelecting} value={this.state.value}
-                                squareFill={(value) => this.setState({ square7: value })} reset={this.state.reset} />
-                            <Square afterSelecting={this.afterSelecting} value={this.state.value}
-                                squareFill={(value) => this.setState({ square8: value })} reset={this.state.reset} />
-                            <Square afterSelecting={this.afterSelecting} value={this.state.value}
-                                squareFill={(value) => this.setState({ square9: value })} reset={this.state.reset} />
+                            <Square afterSelecting={afterSelecting} value={value}
+                                squareFill={(value) => setSquare7(value)} reset={reset} />
+                            <Square afterSelecting={afterSelecting} value={value}
+                                squareFill={(value) => setSquare8(value)} reset={reset} />
+                            <Square afterSelecting={afterSelecting} value={value}
+                                squareFill={(value) => setSquare9(value)} reset={reset} />
                         </div>
                     </div>
                 </div>
-            );
-        }
+            </>
+        );
     }
+
 }
+
+
+
+
+
 
 export default Board
 
