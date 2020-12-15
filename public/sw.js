@@ -1,9 +1,9 @@
 const cacheData = 'appv2';
-self.addEventListener("install", (event) => {
+this.addEventListener("install", (event) => {
     event.waitUntil(
         caches.open(cacheData).then(cache => {
             console.log("adding Cache...")
-            cache.addAll([
+            return cache.addAll([
                 '/static/js/main.chunk.js',
                 '/static/js/0.chunk.js',
                 '/static/js/bundle.js ',
@@ -20,14 +20,14 @@ self.addEventListener("install", (event) => {
 
 
 // activated service worker
-self.addEventListener('activate', evt => {
+this.addEventListener('activate', evt => {
     console.log('service worker has been activated')
 
 })
 
 
 
-self.addEventListener('fetch', (event) => {
+this.addEventListener('fetch', (event) => {
 
     console.log('event triggered')
     if (!navigator.onLine) {
