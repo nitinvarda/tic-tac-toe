@@ -2,7 +2,8 @@ export default function serviceWorker() {
 
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', function () {
-            navigator.serviceWorker.register('/sw.js').then(function (registration) {
+            let swUrl = `${process.env.PUBLIC_URL}/sw.js`;
+            navigator.serviceWorker.register(swUrl).then(function (registration) {
                 // Registration was successful
                 console.log('ServiceWorker registration successful with scope: ', registration.scope);
             }, function (err) {
