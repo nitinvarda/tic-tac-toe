@@ -1,4 +1,4 @@
-const cacheData = 'appv1';
+const cacheData = 'appv2';
 self.addEventListener("install", (event) => {
     event.waitUntil(
         caches.open(cacheData).then(cache => {
@@ -12,6 +12,7 @@ self.addEventListener("install", (event) => {
                 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js',
                 'https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js',
                 '/',
+                '/home',
                 '/index.html'
             ])
         })
