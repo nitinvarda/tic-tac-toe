@@ -7,8 +7,8 @@ this.addEventListener("install", (event) => {
                 '/static/js/2.e2766815.chunk.js',
                 '/static/js/main.5a20eb76.chunk.js',
                 '/',
-                'https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js',
-                'https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css'
+                '/bootstrap.min.js',
+                '/bootstrap.min.css'
 
             ])
                 .catch(err => (
