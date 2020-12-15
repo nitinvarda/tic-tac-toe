@@ -6,6 +6,7 @@ this.addEventListener("install", (event) => {
             return cache.addAll([
                 '/static/js/2.e2766815.chunk.js',
                 '/static/js/main.5a20eb76.chunk.js',
+                '/'
 
             ])
                 .catch(err => (
