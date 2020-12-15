@@ -32,14 +32,14 @@ const instructionsStyle = {
     'fontSize': '16px',
 }
 
-const buttonStyle = {
-    'marginTop': '15px',
-    'marginBottom': '16px',
-    'width': '80px',
-    'height': '40px',
-    'color': 'white',
-    'fontSize': '16px',
-}
+// const buttonStyle = {
+//     'marginTop': '15px',
+//     'marginBottom': '16px',
+//     'width': '80px',
+//     'height': '40px',
+//     'color': 'white',
+//     'fontSize': '16px',
+// }
 
 const winnerStyle = {
     'display': 'flex',
@@ -127,7 +127,7 @@ const Board = () => {
 
                             <div className='d-flex flex-column justify-content-center'>
                                 <div className="winner" style={instructionsStyle}>{value === 'O' ? <h3>Player One Won : X</h3> : <h3>Player Two Won : O</h3>}</div>
-                                <button onClick={back}>Play Again</button>
+                                <button onClick={back} style={{ color: 'black' }}>Play Again</button>
                             </div>
 
                         </div>
@@ -171,7 +171,7 @@ const Board = () => {
                 <div style={containerStyle} className="gameBoard">
                     <h3 className='text-center'>Tic-Tac-Toe</h3>
                     <div className="status" style={instructionsStyle}> {value === 'X' ? `First Player : ${value}` : `Second Player : ${value}`}</div>
-                    <button variant='danger' onClick={resetState} style={buttonStyle}>Reset</button>
+                    <button onClick={resetState} >Reset</button>
                     <div style={boardStyle}>
                         <div className="board-row" style={rowStyle}>
                             <Square afterSelecting={afterSelecting} value={value}
