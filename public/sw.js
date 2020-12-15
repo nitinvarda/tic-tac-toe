@@ -16,6 +16,9 @@ self.addEventListener("install", (event) => {
                 '/index.html'
             ])
         })
+            .catch(err => (
+                console.log(err)
+            ))
     )
 })
 
