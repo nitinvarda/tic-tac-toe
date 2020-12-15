@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Square from './components/Square';
-import { Container, Col, Row, Button } from 'react-bootstrap'
+import { Container, Col, Row } from 'react-bootstrap'
 
 const rowStyle = {
     display: 'flex'
@@ -127,7 +127,7 @@ const Board = () => {
 
                             <div className='d-flex flex-column justify-content-center'>
                                 <div className="winner" style={instructionsStyle}>{value === 'O' ? <h3>Player One Won : X</h3> : <h3>Player Two Won : O</h3>}</div>
-                                <Button variant='primary' onClick={back}>Play Again</Button>
+                                <button onClick={back}>Play Again</button>
                             </div>
 
                         </div>
@@ -155,7 +155,7 @@ const Board = () => {
                             <div className='d-flex flex-column justify-content-center'>
 
                                 <div className="winner" style={instructionsStyle}>Match Drawn    !!</div>
-                                <Button variant='primary' onClick={back}>Play Again</Button>
+                                <button onClick={back}>Play Again</button>
                             </div>
 
                         </div>
@@ -171,7 +171,7 @@ const Board = () => {
                 <div style={containerStyle} className="gameBoard">
                     <h3 className='text-center'>Tic-Tac-Toe</h3>
                     <div className="status" style={instructionsStyle}> {value === 'X' ? `First Player : ${value}` : `Second Player : ${value}`}</div>
-                    <Button variant='danger' onClick={resetState} style={buttonStyle}>Reset</Button>
+                    <button variant='danger' onClick={resetState} style={buttonStyle}>Reset</button>
                     <div style={boardStyle}>
                         <div className="board-row" style={rowStyle}>
                             <Square afterSelecting={afterSelecting} value={value}
