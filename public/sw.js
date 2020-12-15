@@ -4,9 +4,10 @@ this.addEventListener("install", (event) => {
         caches.open(cacheData).then(cache => {
             console.log("adding Cache...")
             return cache.addAll([
-                '/static/js/main.chunk.js',
-                '/static/js/0.chunk.js',
-                '/static/js/bundle.js ',
+                '/static/js/2.e2766815.chunk.js',
+                // '/static/js/0.chunk.js',
+                '/static/js/main.5a20eb76.chunk.js',
+                // '/static/js/bundle.js ',
                 '/',
                 '/home',
                 '/index.html'
