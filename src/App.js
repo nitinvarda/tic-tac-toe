@@ -7,8 +7,8 @@ function App() {
 
     <Router>
       <Switch>
-        <Route path="/home" component={Board} />
-        <Redirect from="/" to="/home" />
+        <Route path="/" component={Board} />
+
 
       </Switch>
 
