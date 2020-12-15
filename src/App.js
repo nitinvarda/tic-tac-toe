@@ -1,13 +1,16 @@
 import Board from './Board'
 import './App.css';
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 function App() {
   return (
-    <div className="game">
-      <div className="game-board">
-        <Board />
-      </div>
-    </div>
+
+    <Router>
+      <Route path="/" component={Board} />
+
+    </Router>
+
+
   );
 }
 
