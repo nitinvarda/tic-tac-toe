@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Square from './components/Square';
-import { Container, Col, Row } from 'react-bootstrap'
+
 
 const rowStyle = {
     display: 'flex'
@@ -14,7 +14,9 @@ const boardStyle = {
     'justifyContent': 'center',
     'display': 'flex',
     'flexDirection': 'column',
-    'border': '3px #eee solid'
+    'border': '3px #eee solid',
+    'marginTop': '25px'
+
 }
 
 const containerStyle = {
@@ -23,11 +25,11 @@ const containerStyle = {
     'flexDirection': 'column',
     'justifyContent': 'start',
     'height': '100vh',
+    'marginTop': '60px'
 }
 
 const instructionsStyle = {
-    'marginTop': '5px',
-    'marginBottom': '5px',
+    'margin': '10px',
     'fontWeight': 'bold',
     'fontSize': '16px',
 }
@@ -47,6 +49,33 @@ const winnerStyle = {
     'height': '100vh',
     'justifyContent': 'center',
     'alignItems': 'center',
+    'width': '80%',
+    'margin': 'auto'
+
+}
+
+const draw = {
+    'display': 'flex',
+    'flexDirection': 'column',
+    'justifyContent': 'center',
+
+}
+
+const btn = {
+    'borderRadius': '10px',
+    'border': 'none',
+    'padding': '8px',
+    'backgroundColor': '#0080ff',
+    'color': 'white'
+}
+
+const resetBtn = {
+    'borderRadius': '10px',
+    'border': 'none',
+    'padding': '8px',
+    'backgroundColor': '#ff0000',
+    'color': 'white',
+    'width': '80px'
 
 }
 
@@ -119,21 +148,17 @@ const Board = () => {
         (square3 === 'O' && square6 === 'O' && square9 === 'O')) {
 
         return (
-            <Container>
-                <Row>
-                    <Col>
 
-                        <div style={winnerStyle}>
 
-                            <div className='d-flex flex-column justify-content-center'>
-                                <div className="winner" style={instructionsStyle}>{value === 'O' ? <h3>Player One Won : X</h3> : <h3>Player Two Won : O</h3>}</div>
-                                <button onClick={back} style={{ color: 'black' }}>Play Again</button>
-                            </div>
+            <div style={winnerStyle}>
 
-                        </div>
-                    </Col>
-                </Row>
-            </Container>
+                <div className='d-flex flex-column justify-content-center'>
+                    <div className="winner" style={instructionsStyle}>{value === 'O' ? <h3>Player One Won : X</h3> : <h3>Player Two Won : O</h3>}</div>
+                    <button onClick={back} style={btn}>Play Again</button>
+                </div>
+
+            </div>
+
         )
     }
     else if (square1.length >= 1 &&
@@ -146,60 +171,56 @@ const Board = () => {
         square8.length >= 1 &&
         square9.length >= 1) {
         return (
-            <Container>
-                <Row>
-                    <Col>
 
-                        <div style={winnerStyle}>
 
-                            <div className='d-flex flex-column justify-content-center'>
+            <div style={winnerStyle}>
 
-                                <div className="winner" style={instructionsStyle}>Match Drawn    !!</div>
-                                <button onClick={back}>Play Again</button>
-                            </div>
+                <div style={draw} >
 
-                        </div>
-                    </Col>
-                </Row>
-            </Container>
+                    <div className="winner" style={instructionsStyle}><h3>Match Drawn    !!</h3></div>
+                    <button style={btn} onClick={back}>Play Again</button>
+                </div>
+
+            </div>
+
 
         )
     }
     else {
         return (
-            <>
-                <div style={containerStyle} className="gameBoard">
-                    <h3 className='text-center'>Tic-Tac-Toe</h3>
-                    <div className="status" style={instructionsStyle}> {value === 'X' ? `First Player : ${value}` : `Second Player : ${value}`}</div>
-                    <button onClick={resetState} >Reset</button>
-                    <div style={boardStyle}>
-                        <div className="board-row" style={rowStyle}>
-                            <Square afterSelecting={afterSelecting} value={value}
-                                squareFill={(value) => setSquare1(value)} reset={reset} />
-                            <Square afterSelecting={afterSelecting} value={value}
-                                squareFill={(value) => setSquare2(value)} reset={reset} />
-                            <Square afterSelecting={afterSelecting} value={value}
-                                squareFill={(value) => setSquare3(value)} reset={reset} />
-                        </div>
-                        <div className="board-row" style={rowStyle}>
-                            <Square afterSelecting={afterSelecting} value={value}
-                                squareFill={(value) => setSquare4(value)} reset={reset} />
-                            <Square afterSelecting={afterSelecting} value={value}
-                                squareFill={(value) => setSquare5(value)} reset={reset} />
-                            <Square afterSelecting={afterSelecting} value={value}
-                                squareFill={(value) => setSquare6(value)} reset={reset} />
-                        </div>
-                        <div className="board-row" style={rowStyle}>
-                            <Square afterSelecting={afterSelecting} value={value}
-                                squareFill={(value) => setSquare7(value)} reset={reset} />
-                            <Square afterSelecting={afterSelecting} value={value}
-                                squareFill={(value) => setSquare8(value)} reset={reset} />
-                            <Square afterSelecting={afterSelecting} value={value}
-                                squareFill={(value) => setSquare9(value)} reset={reset} />
-                        </div>
+
+            <div style={containerStyle} className="gameBoard">
+                <h2 className='text-center'>Tic-Tac-Toe</h2>
+                <div className="status" style={instructionsStyle}> {value === 'X' ? <h5>{`First Player : ${value}`}</h5> : <h5>{`Second Player : ${value}`}</h5>}</div>
+                <button style={resetBtn} onClick={resetState} ><h6>Reset</h6></button>
+                <div style={boardStyle}>
+                    <div className="board-row" style={rowStyle}>
+                        <Square afterSelecting={afterSelecting} value={value}
+                            squareFill={(value) => setSquare1(value)} reset={reset} />
+                        <Square afterSelecting={afterSelecting} value={value}
+                            squareFill={(value) => setSquare2(value)} reset={reset} />
+                        <Square afterSelecting={afterSelecting} value={value}
+                            squareFill={(value) => setSquare3(value)} reset={reset} />
+                    </div>
+                    <div className="board-row" style={rowStyle}>
+                        <Square afterSelecting={afterSelecting} value={value}
+                            squareFill={(value) => setSquare4(value)} reset={reset} />
+                        <Square afterSelecting={afterSelecting} value={value}
+                            squareFill={(value) => setSquare5(value)} reset={reset} />
+                        <Square afterSelecting={afterSelecting} value={value}
+                            squareFill={(value) => setSquare6(value)} reset={reset} />
+                    </div>
+                    <div className="board-row" style={rowStyle}>
+                        <Square afterSelecting={afterSelecting} value={value}
+                            squareFill={(value) => setSquare7(value)} reset={reset} />
+                        <Square afterSelecting={afterSelecting} value={value}
+                            squareFill={(value) => setSquare8(value)} reset={reset} />
+                        <Square afterSelecting={afterSelecting} value={value}
+                            squareFill={(value) => setSquare9(value)} reset={reset} />
                     </div>
                 </div>
-            </>
+            </div>
+
         );
     }
 
