@@ -2,10 +2,10 @@ const cacheData = 'appv2';
 this.addEventListener("install", (event) => {
     event.waitUntil(
         caches.open(cacheData).then(cache => {
-            console.log("adding Cache...")
+
             return cache.addAll([
                 '/static/js/2.95473729.chunk.js',
-                '/static/js/main.6dc19107.chunk.js',
+                '/static/js/main.2dabac6a.chunk.js',
                 '/',
             ])
                 .catch(err => (
@@ -26,7 +26,6 @@ this.addEventListener('activate', evt => {
 
 this.addEventListener('fetch', (event) => {
 
-    console.log('event triggered')
     if (!navigator.onLine) {
         event.respondWith(
             caches.match(event.request).then((res) => {
