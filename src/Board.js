@@ -192,7 +192,7 @@ const Board = () => {
             <div style={containerStyle} className="gameBoard">
                 <h2 className='text-center'>Tic-Tac-Toe</h2>
                 <div className="status" style={instructionsStyle}> {value === 'X' ? <h5>{`First Player : ${value}`}</h5> : <h5>{`Second Player : ${value}`}</h5>}</div>
-                <button style={resetBtn} onClick={resetState} ><h6>Reset</h6></button>
+                <button style={resetBtn} onClick={resetState} >Reset</button>
                 <div style={boardStyle}>
                     <div className="board-row" style={rowStyle}>
                         <Square afterSelecting={afterSelecting} value={value}
